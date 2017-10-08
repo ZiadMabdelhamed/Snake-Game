@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// handle the movement of the snake 
 public class snake : MonoBehaviour {
 
 
@@ -9,28 +10,30 @@ public class snake : MonoBehaviour {
 	public List<Transform> body_list;
 	public Transform snake_head;
 
+	// to make a delay in the movement ( classic movement )
 	public float step_time = 0.15f;
 	public float next_step;
 
+	// this help to prevent the snake from going back in the opposite direction
 	public enum direction {Righ,Left,Up,Down};
 	public direction Dir;
 
+	// object from the swipe controller to controll the rotation
 	public swipe swipe_obj;
 
-	//public List<int> Rotation_list = new List<int> {0,90,180,270};
-
+	// make a rotation list to pick a random direction every time 
 	int[] Rotation_list = {0,90,180,270};
 
-	//public int[] Rotation_list = new int[] {0,90,180,270};
-
+	// the snake body parts 
 	public GameObject snake_body;
 
 	void Start () 
 	{
 		swipe_obj = transform.GetComponent<swipe> ();
 
+		// pick a random direction to start game 
 		int snake_rand_rotation = Rotation_list [Random.Range (0, Rotation_list.Length)];
-		//print (snake_rand_rotation);
+
 		if(snake_rand_rotation == 0)
 		{
 			Dir = direction.Up;
@@ -59,17 +62,18 @@ public class snake : MonoBehaviour {
 	}
 	
 
-	void Update () 
+	void FixedUpdate () 
 	{
 		direction_snake ();
 
+		// apply the delay in the movement  
 		if (Time.time > next_step) 
 		{
 			move ();
 		}
 	}
 
-
+	// move the smake by changing the body parts positions 
 	void move()
 	{	
 		
@@ -81,51 +85,50 @@ public class snake : MonoBehaviour {
 			if (i != 0) 
 			{
 				cur_body.position = body_list [i - 1].position;
-				//cur_body.position = Vector3.Slerp (cur_body.position, body_list [i - 1].position ,0.03f);
-				//cur_body.transform.position = Vector3.Lerp (cur_body.transform.position, body_list [i - 1].transform.position ,0.9f);
+
 			}
 		}
 
-		//snake_head.position += snake_head.forward * speed * Time.deltaTime ;
+		// move the head to drap the body
 		snake_head.position += snake_head.forward * 1 ;
-		//snake_head.Translate (snake_head.forward * 1 , Space.World);
-		//snake_head.transform.position = Vector3.Lerp (snake_head.transform.position, snake_head.transform.position + snake_head.transform.forward * 1 ,1f);
 
 	
 		next_step = Time.time + step_time;
 	}
 
+	// change the direction of the snake head using the swipe direction 
 	void direction_snake ()
 	{
 		if (swipe_obj.swipe_dir == swipe.swipe_direction.up && Dir != direction.Up && Dir != direction.Down) 
 		{
 			snake_head.eulerAngles = new Vector3 (0, 0, 0);
 			Dir = direction.Up;
-			//move ();
+			move ();
 		}
 
 		if (swipe_obj.swipe_dir == swipe.swipe_direction.down && Dir != direction.Up && Dir != direction.Down) 
 		{
 			snake_head.eulerAngles = new Vector3 (0, 180, 0);
 			Dir = direction.Down;
-			//move ();
+			move ();
 		}
 
 		if (swipe_obj.swipe_dir == swipe.swipe_direction.right && Dir != direction.Righ && Dir != direction.Left) 
 		{
 			snake_head.eulerAngles = new Vector3 (0, 90, 0);
 			Dir = direction.Righ;
-			//move ();
+			move ();
 		}
 
 		if (swipe_obj.swipe_dir == swipe.swipe_direction.left && Dir != direction.Righ && Dir != direction.Left) 
 		{
 			snake_head.eulerAngles = new Vector3 (0, -90, 0);
 			Dir = direction.Left;
-			//move ();
+			move ();
 		}
 	}
 
+	// increase one body part
 	public void Add_body()
 	{
 		Transform last_bone = body_list [body_list.Count - 1];

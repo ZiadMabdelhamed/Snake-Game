@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// this class get the direction of the swipe to control the snake 
 public class swipe : MonoBehaviour {
 
 	public float max_time;

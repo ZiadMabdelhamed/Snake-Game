@@ -1,8 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MaterialUI\Scripts\ShadowGen.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\button_manager.cs">
     <Files>
-      <File FileName="Assets\MaterialUI\Scripts\ShadowGen.cs" Line="292" Column="1" />
+      <File FileName="Assets\scripts\border.cs" Line="85" Column="36" />
+      <File FileName="Assets\scripts\game_manager.cs" Line="17" Column="2" />
+      <File FileName="Assets\scripts\swipe.cs" Line="5" Column="2" />
+      <File FileName="Assets\scripts\snake.cs" Line="132" Column="133" />
+      <File FileName="Assets\scripts\button_manager.cs" Line="25" Column="18" />
+      <File FileName="Assets\scripts\hit_something.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

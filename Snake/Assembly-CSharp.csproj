@@ -87,6 +87,8 @@
      <Compile Include="Assets\MaterialUI\Scripts\Toaster.cs" />
      <Compile Include="Assets\MaterialUI\Scripts\ToggleConfig.cs" />
      <Compile Include="Assets\MaterialUI\Scripts\ToggleTextChanger.cs" />
+     <Compile Include="Assets\scripts\border.cs" />
+     <Compile Include="Assets\scripts\button_manager.cs" />
      <Compile Include="Assets\scripts\game_manager.cs" />
      <Compile Include="Assets\scripts\hit_something.cs" />
      <Compile Include="Assets\scripts\snake.cs" />
